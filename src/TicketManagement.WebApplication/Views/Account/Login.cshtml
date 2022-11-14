@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@model TicketManagement.ClientModels.Accounts.LoginModel
+@inject IViewLocalizer Localizer;
+
+@inject IViewLocalizer Localizer;
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{ var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+	var cultureItems = LocOptions.Value.SupportedUICultures
+		.Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+		.ToList();
+	var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}"; }
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<div id="user-hover-none" class="user-info-block" title=" @requestCulture?.Provider?.GetType().Name">
+	<form id="formLanguage" asp-controller="Home"
+		  asp-action="SetLanguage" asp-route-returnUrl="@returnUrl"
+		  method="post" role="form">
+		<select class="select-language" name="culture"
+				onchange="this.form.submit();"
+				asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
+		</select>
+	</form>
+</div>
+
+<link rel="stylesheet" href="~/css/login.css" />
+
+<div class="validation" asp-validation-summary="All"></div>
+
+<form class="form-login" asp-action="Login" asp-controller="Account" asp-anti-forgery="true">
+	<h3>@Localizer["SignName"]</h3>
+	<div>
+		<div class="form-group">
+			<label asp-for="Login">@Localizer["EnterLogin"]</label>
+			<input type="text" required asp-for="Login" />
+			<span asp-validation-for="Login" />
+		</div>
+		<div class="form-group">
+			<label asp-for="Password">@Localizer["EnterPassword"]</label>
+			<input required asp-for="Password" />
+			<span asp-validation-for="Password" />
+		</div>
+		<div class="form-group">
+			<input class="input-sign-in" type="submit" value="@Localizer["SignIn"]" />
+			<a asp-action="Register" asp-controller="Account" class="input-sign-up">@Localizer["SignUp"]</a>
+		</div>
+	</div>
+</form>

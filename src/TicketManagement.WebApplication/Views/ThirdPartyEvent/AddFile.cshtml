@@ -1,0 +1,78 @@
+﻿@model System.Collections.Generic.IEnumerable<TicketManagement.ClientModels.Events.ThirdPartyEvent>
+
+@{ ViewBag.Title = "Added events"; }
+
+<h2>Events</h2>
+<h3>@ViewData["Message"]</h3><br />
+
+<table class="table table-striped">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Name)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.VenueName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.LayoutName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.StartDate)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.EndDate)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Description)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.PosterImage)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Imported)
+		</th>
+
+	</tr>
+
+	@foreach (var item in Model)
+	{
+<tr>
+	<td>
+		@Html.DisplayFor(modelItem => item.Name)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.VenueName)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.LayoutName)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.StartDate)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.EndDate)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.Description)
+	</td>
+	<td>
+		<img width="120" height="160" src="@item.PosterImage" alt="" />
+	</td>
+	@if (item.Imported)
+	{
+<td style="color:green; font-size: 24px;">
+	✓
+</td>
+ }
+else
+{
+<td style="color:red; font-size: 24px">
+	☓
+</td>
+}
+
+</tr>
+}
+
+</table>
+

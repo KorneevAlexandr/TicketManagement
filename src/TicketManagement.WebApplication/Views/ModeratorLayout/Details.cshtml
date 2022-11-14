@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@model TicketManagement.ClientModels.Layouts.LayoutFullInfoModel
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+	<h2>@Localizer["Name"]: @Model.Layout.Name</h2>
+	<p>@Localizer["Venue"]: @Model.Layout.VenueName</p>
+	<p>@Localizer["Description"]: @Model.Layout.Description</p>
+
+	<form method="post">
+		<input type="submit" asp-action="Delete" asp-route-id="@Model.Layout.Id" value="@Localizer["Delete"]" />
+	</form>
+	<form method="get">
+		<input type="submit" asp-action="Update" asp-route-id="@Model.Layout.Id" value="@Localizer["Update"]" />
+	</form>
+
+	<br />
+	<br />
+
+
+	<form method="get">
+		<input class="special-ref" type="submit" asp-action="CreateArea" asp-route-id="@Model.Layout.Id" value="@Localizer["CreateArea"]" />
+	</form>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>@Localizer["Description"]</td>
+				<td>@Localizer["CoordX"]</td>
+				<td>@Localizer["CoordY"]</td>
+				<td>@Localizer["CountSeats"]</td>
+				<td>@Localizer["Actions"]</td>
+			</tr>
+		</thead>
+
+		@foreach (var item in Model.Areas)
+		{
+			<tr>
+				<td>@item.Description</td>
+				<td>@item.CoordX</td>
+				<td>@item.CoordY</td>
+				<td>@item.SeatsCount</td>
+				<td>
+					<form method="post">
+						<input type="submit" asp-action="DeleteArea" asp-route-id="@item.Id" value="@Localizer["Delete"]" />
+					</form>
+					<form method="get">
+						<input type="submit" asp-action="UpdateArea" asp-route-id="@item.Id" value="@Localizer["Update"]" />
+					</form>
+				</td>
+			</tr>
+		}
+	</table>
+</div>

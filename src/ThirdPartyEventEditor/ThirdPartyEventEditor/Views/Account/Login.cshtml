@@ -1,0 +1,30 @@
+﻿@model ThirdPartyEventEditor.Models.User
+
+@{
+	ViewBag.Title = "Login";
+}
+
+<style>
+	li {
+		color: red;
+		font-size: 18px;
+	}
+</style>
+
+<br />
+<div class="validation-block">
+	@Html.ValidationSummary(true)
+</div>
+
+<br />
+<form method="post" action="Login">
+
+	<label>Login</label><br />
+	<input type="text" name="Login" /><br /><br />
+
+	<label>Password</label><br />
+	<input type="text" name="Password" /><br /><br /><br />
+
+	<input type="submit" value="Login" />
+</form>
+

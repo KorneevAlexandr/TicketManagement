@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;S105;SA1027;SA1505;SA1400;SA1210;SA1507;SA1508;S1118;SA1028;S1481;SA1516;SA1413;S125;S103;SA1208;SA1214;S121;SA1503;SA1512;S2365;S1135;S4457;S125;S1541;S2931</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="App.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="App.config">
+      <CustomToolNamespace>TicketManagement.DataAccess</CustomToolNamespace>
+    </ApplicationDefinition>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.9" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+</Project>

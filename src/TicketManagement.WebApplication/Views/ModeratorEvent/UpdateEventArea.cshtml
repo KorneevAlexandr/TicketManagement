@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@model TicketManagement.ClientModels.Events.EventAreaModel
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+	<h3>@Localizer["TitleName"]</h3>
+	<br />
+
+	<form asp-action="UpdateEventArea" method="post">
+
+		<input style="display:none" type="number" name="Id" value="@Model.Id" />
+
+		<label>@Localizer["Description"]:</label><br />
+		<input type="text" required maxlength="200" name="description" value="@Model.Description" /><br /><br />
+
+		<label>@Localizer["CoordX"]:</label><br />
+		<input type="number" required min="0" max="10000" name="coordX" value="@Model.CoordX" /><br /><br />
+
+		<label>@Localizer["CoordY"]:</label><br />
+		<input type="number" required min="0" max="10000" name="coordY" value="@Model.CoordY" /><br /><br />
+
+		<label>@Localizer["Price"], $:</label><br />
+		<input type="number" required min="0" max="10000" name="price" value="@Model.Price" /><br /><br />
+
+		<p>
+			<input type="submit" value="@Localizer["UpdateArea"]" />
+		</p>
+	</form>
+</div>

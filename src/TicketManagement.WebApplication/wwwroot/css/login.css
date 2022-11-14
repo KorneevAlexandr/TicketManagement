@@ -1,0 +1,123 @@
+﻿/* Main color - #32AFED */
+
+/* Styles for main tags */
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Franklin Gothic';
+	color: black;
+}
+
+.form-login {
+	float: left;
+	width: 26%;
+	background-color: #FCFCFC;
+	margin-left: 5%;
+	margin-top: 5%;
+	box-shadow: 0px 0px 6px #32AFED;
+}
+
+.form-register {
+	float: left;
+	width: 50%;
+	background-color: #FCFCFC;
+	margin-left: 12%;
+	margin-top: 5%;
+	box-shadow: 0px 0px 6px #32AFED;
+}
+
+form h3 {
+	text-align: center;
+	margin-top: 3%;
+	margin-bottom: 5%;
+}
+
+label {
+	display: block;
+	margin-bottom: -1%;
+	margin-left: 10%;
+	font-size: 20px;
+}
+
+input {
+	width: 80%;
+	margin-left: 10%;
+	font-size: 22px;
+	margin-bottom: 5%;
+}
+
+.validation {
+	float: left;
+	width: 12%;
+	margin-left: 20%;
+	margin-top: 5%;
+}
+
+li {
+	color: red;
+	font-size: 20px;
+}
+
+.input-sign-in {
+	background-color: #55C915;
+	color: white;
+	float: left;
+	width: 40%;
+	text-align: center;
+	justify-content: center;
+	border: none;
+	margin-left: 5%;
+	margin-bottom: 3%;
+	border-radius: 4%;
+	transition: 0.1s;
+}
+
+.input-sign-in:hover {
+	box-shadow: 0px 0px 8px #55C915;
+	transition: 0.1s;
+}
+
+.input-sign-up {
+	font-size: 22px;
+	background-color: #FFA40C;
+	color: white;
+	float: left;
+	width: 40%;
+	text-align: center;
+	justify-content: center;
+	border: none;
+	margin-left: 10%;
+	margin-bottom: 3%;
+	border-radius: 4%;
+	transition: 0.1s;
+	opacity: 0.5;
+}
+
+.input-sign-up:hover {
+	box-shadow: 0px 0px 8px #FFA40C;
+	transition: 0.1s;
+}
+
+a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.form-left {
+	float: left;
+	width: 46%;
+}
+
+.form-right {
+	float: left;
+	width: 46%;
+	margin-left: 8%;
+}
+
+.register-validation {
+	float: left;
+	width: 12%;
+	margin-left: 5%;
+	margin-top: 5%;
+}

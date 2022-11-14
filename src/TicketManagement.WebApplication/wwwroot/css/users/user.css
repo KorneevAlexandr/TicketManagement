@@ -1,0 +1,152 @@
+﻿.wrapper {
+	color: white;
+	width: 70%;
+	margin-top: 3%;
+	margin-left: 15%;
+}
+
+.user-info {
+	background-color: white;
+	width: 100%;
+	float: left;
+	margin-bottom: 5%;
+}
+
+h2 {
+	text-decoration: underline;
+	width: 50%;
+	margin-left: 25%;
+	margin-bottom: 5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.user-info-block {
+	font-size: 22px;
+	float: left;
+	margin-bottom: 5%;
+	width: 35%;
+	margin-left: 10%;
+	margin-right: 15%;
+	margin-bottom: 4%;
+	transition: 0.2s;
+}
+
+.user-info-block:hover {
+	background-color: #EDFFFF;
+	box-shadow: 0px 0px 14px #97E5F6;
+	transition: 0.2s;
+}
+
+#user-hover-none:hover {
+	background-color: white;
+	box-shadow: none;
+}
+
+.permanent-user-block {
+	display: flex;
+	align-items: center;
+	background-color: #97E5F6;
+	color: white;
+	width: 36%;
+	padding-left: 2%;
+	margin-top: 4px;
+	float: left;
+	height: 100%;
+	font-size: 23px;
+	text-decoration: blink;
+}
+
+.user-value-block {
+	font-size: 22px;
+	text-align: center;
+	border: 5px #97E5F6 solid;
+	box-shadow: 0px 0px 10px #97E5F6;
+}
+
+.action-block {
+	background-color: white;
+	width: 40%;
+	float: right;
+	height: 100%;
+}
+
+.ref-action {
+	opacity: 0.6;
+	width: 50%;
+	margin-left: 25%;
+	height: 5%;
+	display: block;
+	font-size: 22px;
+	color: white;
+	justify-content: center;
+	margin-top: 10%;
+	text-align: center;
+	align-items: center;
+	padding: 1%;
+	border-radius: 5%;
+	transition: 0.2s;
+}
+
+.ref-action:hover {
+	text-decoration: none;
+	color: white;
+	transition: 0.2s;
+	opacity: 0.8;
+}
+
+.up-score-action {
+	background-color: green;
+}
+
+.up-score-action:hover {
+	box-shadow: 0px 0px 10px green;
+}
+
+.up-user-action {
+	background-color: #16836B;
+}
+
+.up-user-action:hover {
+	box-shadow: 0px 0px 10px #2E9B83;
+}
+
+.exit-action {
+	width: 40%;
+	margin-left: 30%;
+	margin-top: 40%;
+	background-color: dimgray;
+	opacity: 0.35;
+}
+
+.exit-action:hover {
+	opacity: 0.6;
+	box-shadow: 0px 0px 8px dimgray;
+}
+
+.table-info {
+	margin-top: 5%;
+	margin-bottom: 10%;
+	background-color: white;
+	width: 80%;
+	margin-top: 5%;
+	margin-left: 10%;
+}
+
+table {
+	background-color: white;
+	margin-bottom: 10%;
+}
+
+.h2-ticket {
+	margin-bottom: 2%;
+	margin-top: 15%;
+}
+
+.management-action {
+	background-color: red;
+}
+.management-action:hover {
+	box-shadow: 0px 0px 10px red;
+}

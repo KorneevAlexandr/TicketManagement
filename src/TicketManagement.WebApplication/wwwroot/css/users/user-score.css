@@ -1,0 +1,75 @@
+﻿.wrapper {
+	width: 30%;
+	height: 40vh;
+	background-color: #FCFCFC;
+	box-shadow: 0px 0px 6px #32AFED;
+	margin-left: 35%;
+	margin-top: 10vh;
+}
+
+h2 {
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 2%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.user-score {
+	font-size: 23px;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	text-align: center;
+}
+
+form {
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 12%;
+}
+
+input {
+	width: 40%;
+	margin-left: 30%;
+	font-size: 22px;
+}
+
+label {
+	text-align: center;
+	width: 60%;
+	margin-left: 20%;
+	font-size: 22px;
+	margin-bottom: -1%;
+}
+
+.btn-add {
+	background-color: green;
+	opacity: 0.6;
+	font-size: 22px;
+	display: block;
+	width: 36%;
+	margin-left: 32%;
+	margin-top: 5%;
+	color: white;
+	justify-content: center;
+	text-align: center;
+	border: none;
+	align-items: center;
+	padding: 1%;
+	border-radius: 5%;
+	transition: 0.2s;
+}
+
+	.btn-add:hover {
+		box-shadow: 0px 0px 10px green;
+		text-decoration: none;
+		color: white;
+		transition: 0.2s;
+		opacity: 0.8;
+	}

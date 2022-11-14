@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@model TicketManagement.ClientModels.Layouts.CreateLayoutModel
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+
+	<p>@Localizer["SelectVenue"]</p>
+	<form asp-action="Create" method="post">
+		<p>
+			<select asp-for="VenueId" asp-items="@(new SelectList(Model.InfoVenues, "Id", "Name"))"></select>
+		</p>
+
+		<label>@Localizer["Name"]:</label><br />
+		<input type="text" required maxlength="120" name="name" /><br /><br />
+
+		<label>@Localizer["Description"]:</label><br />
+		<input type="text" required maxlength="120" name="description" /><br /><br />
+
+		<input type="submit" value="@Localizer["Create"]" />
+	</form>
+
+</div>

@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+	<h3>@Localizer["MainTitle"]</h3>
+	<br />
+
+	<form method="post">
+		<label>@Localizer["Name"]:</label><br />
+		<input type="text" required maxlength="120" name="name" /><br /><br />
+
+		<label>@Localizer["Description"]:</label><br />
+		<input type="text" required maxlength="120" name="description" /><br /><br />
+
+		<label>@Localizer["Address"]:</label><br />
+		<input type="text" required maxlength="200" name="address" /><br /><br />
+
+		<label>@Localizer["Phone"]:</label><br />
+		<input type="text" required maxlength="30" name="phone" /><br /><br />
+
+		<input type="submit" value="@Localizer["Create"]" />
+	</form>
+</div>

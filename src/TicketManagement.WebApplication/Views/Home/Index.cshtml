@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@model IEnumerable<TicketManagement.ClientModels.Events.EventModel>
+@inject IViewLocalizer Localizer
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/events/event.css" />
+
+<article class="event-article">
+
+	<div class="title-events">@Localizer["UpcomingEvents"]</div>
+
+	@foreach (var item in Model)
+	{
+		<div class="event-block">
+
+			<div class="event-name-block">
+				<div class="event-name">@item.Name</div>
+			</div>
+
+			<img src="@item.URL" class="event-img" />
+
+			<div class="event-date-block">
+				<div class="date-span">@Localizer["Start"] </div><div class="date-span">
+					@item.DateTimeStart.ToShortDateString() @item.DateTimeStart.ToShortTimeString()
+				</div><br />
+				<div class="date-span">@Localizer["End"] </div><div class="date-span">
+					@item.DateTimeEnd.ToShortDateString() @item.DateTimeEnd.ToShortTimeString()
+				</div>
+			</div>
+
+			<a class="ref-buy" asp-action="ShowEventBuy" asp-controller="Purchase" asp-route-id="@item.Id">@Localizer["Buy"]</a>
+		</div>
+	}
+
+</article>

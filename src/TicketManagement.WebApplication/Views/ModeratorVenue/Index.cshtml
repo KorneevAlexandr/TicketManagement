@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization; 
+
+@model IEnumerable<TicketManagement.ClientModels.Venues.VenueModel>
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewBag.Title = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+	<a class="special-ref" asp-action="Index" asp-controller="ModeratorLayout">@Localizer["Layouts"]</a>
+	<br />
+
+	<a class="special-ref" asp-action="Create">@Localizer["AddVenue"]</a><br />
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>@Localizer["Name"]</td>
+				<td>@Localizer["Description"]</td>
+			</tr>
+		</thead>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td>@item.Description</td>
+				<td>
+					<a asp-action="Details" asp-controller="ModeratorVenue" asp-route-id="@item.Id">@Localizer["Details"]</a> |
+					<a asp-action="Update" asp-controller="ModeratorVenue" asp-route-id="@item.Id">@Localizer["Update"]</a> |
+					<a asp-action="Delete" asp-controller="ModeratorVenue" asp-route-id="@item.Id">@Localizer["Delete"]</a>
+				</td>
+			</tr>
+			<tr><td><br /></tr>
+		}
+	</table>
+</div>

@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@model TicketManagement.ClientModels.Areas.AreaInfoModel
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+	<h3>@Localizer["TitleName"]</h3>
+	<br />
+
+	<form method="post">
+		<input style="display: none" type="number" name="layoutId" value="@Model.LayoutId" />
+
+		<label>@Localizer["Description"]:</label><br />
+		<input type="text" required maxlength="200" name="description" /><br /><br />
+
+		<label>@Localizer["CoordX"]</label><br />
+		<input type="number" required min="0" max="10000" name="coordX" /><br /><br />
+
+		<label>@Localizer["CoordY"]</label><br />
+		<input type="number" required min="0" max="10000" name="coordY" /><br /><br />
+		<p>@Localizer["RowNumber"]</p>
+		<input type="number" required min="1" max="10000" name="rows" /> X <input type="number" required min="1" max="10000" name="numbers" />
+
+		<input type="submit" asp-action="CreateArea" value="@Localizer["Create"]" />
+
+	</form>
+</div>

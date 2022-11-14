@@ -1,0 +1,25 @@
+﻿@model ThirdPartyEventEditor.Models.ThirdPartyEvent
+
+@{
+	ViewBag.Title = "Details";
+}
+
+<h2>@Model.Name</h2>
+<br />
+<img width="400" height="540" src="@Model.PosterImage" alt="" />
+<br /><br />
+<p>Venue: @Model.VenueName</p>
+<br />
+<p>Layout: @Model.LayoutName</p>
+<br />
+<p>@Model.Description</p>
+<br />
+<br />
+<p>Price: @Model.Price</p>
+<br />
+<p>Start: @Model.StartDate</p>
+<br />
+<p>End: @Model.EndDate</p>
+<br />
+
+

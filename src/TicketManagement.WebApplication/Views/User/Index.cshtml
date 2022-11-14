@@ -1,0 +1,104 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@using TicketManagement.ClientModels.Accounts; 
+
+@model TicketManagement.ClientModels.Users.UserTicketsModel
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{ var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+	var cultureItems = LocOptions.Value.SupportedUICultures
+		.Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+		.ToList();
+	var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}"; }
+
+@{ ViewData["Title"] = Localizer["TitleName"]; }
+
+<link rel="stylesheet" href="~/css/users/user.css" />
+
+<div class="wrapper">
+
+	<div class="user-info">
+		<h2>@Localizer["InfoAboutUser"]</h2>
+
+		<div class="action-block">
+			<a class="ref-action up-score-action" asp-action="UpBalance">@Localizer["TopUpBalance"]</a>
+			<a class="ref-action up-user-action" asp-action="UpdateSettings">@Localizer["Update"]</a>
+			@if (Model.User.State == RoleState.ModeratorEvent)
+			{
+				<a class="ref-action management-action" asp-controller="ModeratorEvent" asp-action="Index" >@Localizer["EventManagement"]</a>
+				<a class="ref-action management-action" asp-controller="ThirdPartyEvent" asp-action="Index" >@Localizer["ThirdPartyEventManagement"]</a>
+			}
+			else if (Model.User.State == RoleState.ModeratorVenue)
+			{
+				<a class="ref-action management-action" asp-controller="ModeratorVenue" asp-action="Index" >@Localizer["VenueManagement"]</a>
+			}
+			<a class="ref-action exit-action" asp-controller="Account" asp-action="Exit">@Localizer["Exit"]</a>
+		</div>
+
+		<div id="user-hover-none" class="user-info-block" title="@Localizer["Request culture provider:"] @requestCulture?.Provider?.GetType().Name">
+			<form id="formLanguage" asp-controller="Home"
+				  asp-action="SetLanguage" asp-route-returnUrl="@returnUrl"
+				  method="post" role="form">
+				<label class="label-language" asp-for="@requestCulture.RequestCulture.UICulture.Name">@Localizer["Language:"]</label>
+				<select class="select-language" name="culture"
+						onchange="this.form.submit();"
+						asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
+				</select>
+			</form>
+		</div>
+
+		<div class="user-info-block">
+			<div class="permanent-user-block">@Localizer["Name"]:</div>
+			<div class="user-value-block">@Model.User.Name</div>
+		</div>
+		<div class="user-info-block">
+			<div class="permanent-user-block">@Localizer["Surname"]:</div>
+			<div class="user-value-block">@Model.User.Surname</div>
+		</div>
+		<div class="user-info-block">
+			<div class="permanent-user-block">@Localizer["Email"]:</div>
+			<div class="user-value-block">@Model.User.Email</div>
+		</div>
+		<div class="user-info-block">
+			<div class="permanent-user-block">@Localizer["Age"]:</div>
+			<div class="user-value-block">@Model.User.Age</div>
+		</div>
+		<div class="user-info-block">
+			<div class="permanent-user-block">@Localizer["Login"]:</div>
+			<div class="user-value-block">@Model.User.Login</div>
+		</div>
+		<div class="user-info-block">
+			<div class="permanent-user-block">@Localizer["Score"], $:</div>
+			<div class="user-value-block">@Model.User.Score</div>
+		</div>
+
+	</div>
+
+	<h2 class="h2-ticket">@Localizer["BoughtTickets"]</h2>
+	<table style="margin-bottom: 10%;" class="table table-striped">
+		<thead>
+			<tr>
+				<td>@Localizer["TicketDate"]</td>
+				<td>@Localizer["TicketEventName"]</td>
+				<td>@Localizer["TicketPrice"], $</td>
+			</tr>
+		</thead>
+
+		@foreach (var item in Model.Tickets)
+		{
+<tr>
+	<td>@item.DateTimePurchase.ToShortDateString()</td>
+	<td>@item.EventName</td>
+	<td>@item.Price</td>
+</tr>
+}
+	</table>
+
+
+</div>
+
+

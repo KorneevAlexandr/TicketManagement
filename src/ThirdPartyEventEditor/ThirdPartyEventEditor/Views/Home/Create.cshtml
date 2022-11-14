@@ -1,0 +1,49 @@
+﻿@model ThirdPartyEventEditor.Models.ThirdPartyEvent
+
+@{
+	ViewBag.Title = "Add";
+}
+
+<style>
+	.validation-block {
+		color: red;
+	}
+</style>
+
+<form action="Create" method="post">
+
+	<div class="validation-block">
+		<p>@Html.ValidationMessageFor(model => model.Name)</p>
+		<p>@Html.ValidationMessageFor(model => model.LayoutName)</p>
+		<p>@Html.ValidationMessageFor(model => model.StartDate)</p>
+		<p>@Html.ValidationMessageFor(model => model.EndDate)</p>
+		<p>@Html.ValidationMessageFor(model => model.Description)</p>
+		<p>@Html.ValidationMessageFor(model => model.Price)</p>
+		<p>@Html.ValidationMessageFor(model => model.NameImage)</p>
+	</div><br />
+
+	<label>Name: </label><br />
+	<input type="text" name="Name" value="@if (Model != null) {@Model.Name}" /><br /><br />
+
+	<label>Layout name: </label><br />
+	<input type="text" name="LayoutName" value="@if (Model != null) {@Model.LayoutName}" /><br /><br />
+
+	<label>Date start: </label><br />
+	<input type="text" name="StartDate" value="@if (Model != null && Model.StartDate != DateTime.MinValue) {@Model.StartDate}" /><br /><br />
+
+	<label>Date end: </label><br />
+	<input type="text" name="EndDate" value="@if (Model != null && Model.EndDate != DateTime.MinValue) {@Model.EndDate}" /><br /><br />
+
+	<label>Description: </label><br />
+	<textarea name="Description">@if (Model != null) {@Model.Description}</textarea><br /><br />
+
+	<label>Price</label><br />
+	<input type="text" name="Price" value="@if (Model != null) {@Model.Price}" /><br /><br />
+
+	<label>Name image: </label><br />
+	<textarea name="NameImage">@if (Model != null) {@Model.NameImage}</textarea><br /><br />
+
+	<input type="submit" value="Add" />
+</form>
+
+

@@ -1,0 +1,105 @@
+﻿.wrapper {
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 2%;
+}
+
+.event-content {
+	box-shadow: 0px 0px 5px #32AFED;
+	padding-top: 3vh;
+	padding-bottom: 3vh;
+}
+
+.event-name {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+}
+
+.event-img {
+	width: 50%;
+	margin-left: 25%;
+	height: 50vh;
+}
+
+.event-description {
+	font-size: 20px;
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 3%;
+}
+
+.event-date {
+	width: 20%;
+	margin-left: 15%;
+	margin-top: 2%;
+}
+
+.event-date-start, .event-date-end {
+	font-size: 20px;
+}
+
+.event-venue {
+	width: 70%;
+	margin-left: 15%;
+	font: bold;
+	font-size: 24px;
+	margin-top: 3.5%;
+}
+
+.event-venue-info {
+	margin-left: 15%;
+	display: block;
+	font-size: 20px;
+}
+
+.event-free-seats {
+	margin-left: 15%;
+	margin-top: 2%;
+	font-size: 20px;
+}
+
+.event-buy-ticket {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 5%;
+	margin-bottom: 1%;
+}
+
+.event-buy-ref {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 60%;
+	height: 7%;
+	color: white;
+	background-color: #19D028;
+	border-radius: 5%;
+	font-size: 19px;
+	transition: 0.1s;
+}
+
+.event-buy-ref:hover {
+	text-decoration: none;
+	color: white;
+	background-color: #21A330;
+	box-shadow: 0px 0px 4px #21A330;
+	transition: 0.1s;
+}
+
+.event-not-buy-ref {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 60%;
+	height: 7%;
+	color: white;
+	background-color: gray;
+	border-radius: 5%;
+	font-size: 19px;
+	transition: 0.1s;
+}

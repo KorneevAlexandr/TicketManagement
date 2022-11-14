@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization; 
+
+@model TicketManagement.ClientModels.Venues.VenueModel;
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+	<h2>@Localizer["TitleName"]</h2>
+
+	<form method="post">
+		<label>@Localizer["Name"]:</label><br />
+		<input type="text" required maxlength="120" name="name" value="@Model.Name" /><br /><br />
+
+		<label>@Localizer["Description"]:</label><br />
+		<input type="text" required maxlength="120" name="description" value="@Model.Description" /><br /><br />
+
+		<label>@Localizer["Address"]:</label><br />
+		<input type="text" required maxlength="200" name="address" value="@Model.Address" /><br /><br />
+
+		<label>@Localizer["Phone"]:</label><br />
+		<input type="text" required maxlength="30" name="phone" value="@Model.Phone" /><br /><br />
+
+		<input type="submit" value="@Localizer["Update"]" />
+	</form>
+</div>

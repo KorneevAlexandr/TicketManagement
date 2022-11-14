@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization; 
+
+@model TicketManagement.ClientModels.Venues.VenueModel;
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+	<h3>@Localizer["Sure"]</h3>
+
+	<p>@Localizer["Name"]: @Model.Name</p>
+	<p>@Localizer["Description"]: @Model.Description</p>
+	<p>@Localizer["Address"]: @Model.Address</p>
+	<p>@Localizer["Phone"]: @Model.Phone</p>
+
+	<form asp-controller="ModeratorVenue" asp-action="Delete" method="post">
+		<div class="form-group">
+			<input type="submit" class="btn btn-default" value="@Localizer["Delete"]" />
+		</div>
+	</form>
+</div>

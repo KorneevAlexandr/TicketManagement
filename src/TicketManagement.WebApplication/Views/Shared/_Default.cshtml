@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/default.css" />
+	<link rel="shortcut icon" href="~/icons/Pencil.ico" type="image/x-icon">
+</head>
+
+
+<body>
+
+	<header>
+
+		<div class="header-top">
+
+			<div class="header-name">
+				<a asp-controller="Home" asp-action="Index">TicketManagement</a>
+			</div>
+
+			@if (User.Identity.Name != null && User.Identity.IsAuthenticated)
+			{
+				<a asp-controller="User" asp-action="Index" class="header-user-reference">@User.Identity.Name</a> 
+			}
+			else
+			{
+				<a asp-controller="Account" asp-action="Login" class="header-user-reference">@Localizer["Login"]</a>			
+			}
+
+		</div>
+
+		<div class="header-bottom">
+			<div class="header-all-references-block">
+				<a class="header-reference" asp-controller="Home" asp-action="Index">@Localizer["Main"]</a>
+				<a class="header-reference" asp-controller="Home" asp-action="Poster">@Localizer["Poster"]</a>
+				<a class="header-reference" asp-controller="Home" asp-action="FAQ" id="header_last_reference">@Localizer["FAQ"]</a>
+			</div>
+		</div>
+
+	</header>
+
+	<main>
+		@RenderBody()
+	</main>
+
+	<footer>
+		<div class="footer-copy">
+			<span class="footer-name">TicketManagement</span>
+			<span>Copyright &copy; 2021 @Localizer["AllRightsReserved"]</span>
+		</div>
+		<div class="footer-img-block">
+			<img src="~/icons/ticket.ico" />
+		</div>
+	</footer>
+
+	@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@model IEnumerable<TicketManagement.ClientModels.Events.EventModel> 
+@inject IViewLocalizer Localizer
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/events/event.css" />
+
+<div class="form-block">
+	<form method="get">
+		<div class="input-block">
+			<label>@Localizer["Name"]</label>
+			<input type="text" name="partName" placeholder="@Localizer["PlaceholderName"]" />
+		</div>
+
+		<div class="input-block">
+			<label>@Localizer["DateStart"]</label>
+			<input type="date" name="start" />
+		</div>
+
+		<div class="input-block">
+			<label>@Localizer["DateEnd"]</label>
+			<input type="date" name="end" />
+		</div>
+
+		<input class="input-search" asp-action="Poster" type="submit" value="@Localizer["Search"]" />
+	</form>
+</div>
+
+<article class="event-article">
+
+	<div class="title-events">@Localizer["FoundEvents"]</div>
+
+	@foreach (var item in Model)
+	{
+		<div class="event-block">
+
+			<div class="event-name-block">
+				<div class="event-name">@item.Name</div>
+			</div>
+
+			<img class="event-img" src="@item.URL">
+
+			<div class="event-date-block">
+				<div class="date-span">@Localizer["StartDate"]: </div><div class="date-span">
+					@item.DateTimeStart.ToShortDateString() @item.DateTimeStart.ToShortTimeString()
+				</div><br />
+				<div class="date-span">@Localizer["EndDate"]: </div><div class="date-span">
+					@item.DateTimeEnd.ToShortDateString() @item.DateTimeEnd.ToShortTimeString()
+				</div>
+			</div>
+
+			<a class="ref-buy" asp-action="ShowEventBuy" asp-controller="Purchase" asp-route-id="@item.Id">@Localizer["Buy"]</a>
+		</div>
+	}
+
+</article>

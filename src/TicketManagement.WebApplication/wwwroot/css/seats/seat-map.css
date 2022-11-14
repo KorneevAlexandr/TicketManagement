@@ -1,0 +1,53 @@
+﻿.wrapper {
+	width: 80%;
+	margin-left: 10%;
+}
+
+.area-info {
+	margin-top: 3%;
+	width: 50%;
+}
+
+.area-field {
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.seat-click {
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.input-seat {
+	margin: 0.6vh;
+}
+
+.input-free {
+	background-color: chartreuse;
+	border: none;
+	width: 6vh;
+	height: 6vh;
+	border-radius: 10%;
+	transition: 0.1s;
+}
+
+.input-free:hover {
+	background-color: black;
+	box-shadow: 0px 0px 5px black;
+	opacity: 0.9;
+	transition: 0.1s;
+}
+
+.input-booked {
+	background-color: grey;
+	border: none;
+	width: 6vh;
+	height: 6vh;
+	opacity: 0.5;
+	border-radius: 10%;
+}
+
+.input-booked:hover {
+	cursor: inherit;
+}

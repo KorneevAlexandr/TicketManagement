@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization; 
+
+@model TicketManagement.ClientModels.Tickets.TicketForBuyModel;
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/tickets/ticket.css" />
+
+<div class="wrapper">
+	
+	<div class="ticket-content">
+		<div class="event-info">
+			<h3>@Localizer["InfoByEvent"]</h3>
+			<div class="event-info-block">@Localizer["Name"]: @Model.Event.Name</div>
+			<div class="event-info-block">
+				@Localizer["Time"]: @Model.Event.DateTimeStart.ToShortDateString() @Model.Event.DateTimeStart.ToShortTimeString() -
+				@Model.Event.DateTimeEnd.ToShortDateString() @Model.Event.DateTimeEnd.ToShortTimeString()
+			</div>
+
+			<div class="event-info-block">@Localizer["Venue"]: @Model.VenueName</div>
+			<div class="event-info-block">@Localizer["Address"]: @Model.Address</div>
+			<hr />
+		</div>
+
+		<h3>@Localizer["InfoByUser"]</h3>
+		<div class="user-info">
+			<div class="info-block new-block">@Localizer["Email"]: @Model.UserEmail</div>
+			<div class="info-block new-block">@Localizer["FullName"]: @Model.UserFullName</div>
+			<div class="info-block new-block">@Localizer["Balance"]: @Model.UserScore</div>
+			<hr />
+		</div>
+
+		<h3 class="h3-info-place">@Localizer["InfoByPlace"]</h3>
+		<div class="place-info">
+			<div class="info-block">@Model.AreaDescription</div>
+			<div class="info-block">@Localizer["Row"]: @Model.Row, @Localizer["Number"]: @Model.Number</div>
+			<div class="info-block">@Localizer["Price"], $: @Model.Price</div>
+			<hr />
+		</div>
+
+		@if (Model.UserScore < Model.Price)
+		{
+			<p style="float: left; color: red; font-size: 22px;">@Localizer["NotEnoughMoney"]</p>
+			<form method="get">
+				<input class="ref-up-balance" type="submit" asp-action="UpBalance" asp-controller="User" asp-route-id="@Model.UserId" value="@Localizer["TopUpBalance"]" />
+			</form>
+		}
+		else
+		{
+			<form method="post">
+				<input class="buy-ref" type="submit" asp-action="DealTicket" asp-route-id="@Model.EventSeatId" value="@Localizer["BuyThisTicket"]" />
+			</form>
+		}
+
+	</div>
+</div>

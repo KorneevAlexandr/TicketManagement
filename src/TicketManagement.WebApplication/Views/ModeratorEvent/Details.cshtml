@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@model TicketManagement.ClientModels.Events.EventFullModel
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+
+	<h2>@Localizer["Name"]: @Model.Event.Name</h2>
+	<p>@Localizer["Description"]: @Model.Event.Description</p>
+	<p>@Localizer["DateTimeStart"]: @Model.Event.DateTimeStart.ToShortDateString() @Model.Event.DateTimeStart.ToShortTimeString()</p>
+	<p>@Localizer["DateTimeEnd"]: @Model.Event.DateTimeEnd.ToShortDateString() @Model.Event.DateTimeEnd.ToShortTimeString()</p>
+	<br />
+	<form method="post">
+		<input class="wsi-red" type="submit" asp-action="Delete" asp-route-id="@Model.Event.Id" value="@Localizer["Delete"]" />
+	</form>
+	<form method="get">
+		<input type="submit" asp-action="Update" asp-route-id="@Model.Event.Id" value="@Localizer["Update"]" />
+	</form>
+	<br />
+
+	<br />
+	<h3>@Localizer["EventAreas"]</h3>
+	<br />
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>@Localizer["Description"]</td>
+				<td>@Localizer["CoordX"]</td>
+				<td>@Localizer["CoordY"]</td>
+				<td>@Localizer["Price"], $</td>
+				<td>@Localizer["Actions"]</td>
+			</tr>
+		</thead>
+
+		@foreach (var item in Model.EventAreas)
+		{
+			<tr>
+				<td>@item.Description</td>
+				<td>@item.CoordX</td>
+				<td>@item.CoordY</td>
+				<td>@item.Price</td>
+				<td>
+					<form method="post">
+						<input type="submit" asp-action="DeleteEventArea" asp-route-id="@item.Id" value="@Localizer["Delete"]" />
+					</form>
+					<form method="get">
+						<input type="submit" asp-action="UpdateEventArea" asp-route-id="@item.Id" value="@Localizer["Update"]" />
+						<input type="submit" asp-action="Seats" asp-route-id="@item.Id" value="@Localizer["ChangeSeats"]" />
+					</form>
+				</td>
+			</tr>
+		}
+	</table>
+</div>

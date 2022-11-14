@@ -1,0 +1,97 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@using TicketManagement.ClientModels.Accounts 
+
+@model TicketManagement.ClientModels.Users.UsersForAdminModel
+@inject IViewLocalizer Localizer;
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{ var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+	var cultureItems = LocOptions.Value.SupportedUICultures
+		.Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+		.ToList();
+	var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}"; }
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<div style="width: 80%; margin: 3% 0% 0% 10%">
+	<div>
+		<a style="font-size: 24px" asp-controller="Account" asp-action="Exit">@Localizer["Exit"]</a>
+	</div><br />
+
+	<div id="user-hover-none" class="user-info-block" title="@Localizer["Request culture provider:"] @requestCulture?.Provider?.GetType().Name">
+		<form id="formLanguage" asp-controller="Home"
+			  asp-action="SetLanguage" asp-route-returnUrl="@returnUrl"
+			  method="post" role="form">
+			<label class="label-language" asp-for="@requestCulture.RequestCulture.UICulture.Name">@Localizer["Language"]: </label>
+			<select class="select-language" name="culture"
+					onchange="this.form.submit();"
+					asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
+			</select>
+		</form>
+	</div>
+	<br />
+
+	<div>
+		<form method="post">
+			@if (Model.RoleId.First() == (int)RoleState.User)
+			{
+				<input style="background-color: deepskyblue" asp-action="AllUsers" asp-controller="Admin" type="submit" value="@Localizer["AllUsers"]" />
+				<input asp-action="AllVenueModerators" asp-controller="Admin" type="submit" value="@Localizer["VenueModerators"]" />
+				<input asp-action="AllEventModerators" asp-controller="Admin" type="submit" value="@Localizer["EventModerators"]" />
+			}
+			else if (Model.RoleId.First() == (int)RoleState.ModeratorVenue)
+			{
+				<input asp-action="AllUsers" asp-controller="Admin" type="submit" value="@Localizer["AllUsers"]" />
+				<input style="background-color: deepskyblue" asp-action="AllVenueModerators" asp-controller="Admin" type="submit" value="@Localizer["VenueModerators"]" />
+				<input asp-action="AllEventModerators" asp-controller="Admin" type="submit" value="@Localizer["EventModerators"]" />
+			}
+			else if (Model.RoleId.First() == (int)RoleState.ModeratorEvent)
+			{
+				<input asp-action="AllUsers" asp-controller="Admin" type="submit" value="@Localizer["AllUsers"]" />
+				<input asp-action="AllVenueModerators" asp-controller="Admin" type="submit" value="@Localizer["VenueModerators"]" />
+				<input style="background-color: deepskyblue" asp-action="AllEventModerators" asp-controller="Admin" type="submit" value="@Localizer["EventModerators"]" />
+			}
+
+		</form>
+	</div>
+
+	<br />
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td style="color: brown">@Localizer["FullName"]</td>
+				<td style="color: brown">@Localizer["Login"]</td>
+			</tr>
+		</thead>
+		@foreach (var item in Model.Users.ToList())
+		{
+			<tr>
+				<td>@item.FullName</td>
+				<td>@item.Login</td>
+				<td><a asp-action="Details" asp-controller="Admin" asp-route-id="@item.Id">@Localizer["Details"]</a></td>
+			</tr>
+		}
+	</table>
+
+	<br />
+	<br />
+	<form method="get" asp-action="AllUsers" asp-controller="Admin">
+		<input style="display: none" type="number" name="roleId" value="@Model.RoleId" />
+		@for (int i = 1; i <= Model.NumberPages; i++)
+		{
+			@if (i == Model.NumberActivityPage)
+			{
+				<input style="background-color: deepskyblue" type="submit" value="@i" name="page" />
+			}
+			else
+			{
+				<input type="submit" value="@i" name="page" />
+			}
+		}
+	</form>
+</div>

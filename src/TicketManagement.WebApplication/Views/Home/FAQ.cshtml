@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<style>
+	.faq-block {
+		width: 60%;
+		margin-top: 5%;
+		margin-left: 20%;
+		box-shadow: 0px 0px 10px #32AFED;
+		padding-top: 1.5%;
+		padding-bottom: 2%;
+	}
+
+	.faq-name {
+		width: 50%;
+		margin-left: 25%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.faq-data {
+		width: 80%;
+		margin-left: 10%;
+		margin-top: 3%;
+		font-size: 22px;
+		text-align: justify;
+	}
+</style>
+
+<div class="faq-block">
+	<h2 class="faq-name">@Localizer["NameFAQ"]</h2>
+	<div class="faq-data">@Localizer["Data"]</div>
+</div>

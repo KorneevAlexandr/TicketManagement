@@ -1,0 +1,8 @@
+﻿CREATE TABLE UserRoles
+(
+	Id INT PRIMARY KEY IDENTITY,
+	UserId INT NOT NULL,
+	FOREIGN KEY (UserId) REFERENCES dbo.Users(Id),
+	RoleId INT DEFAULT 2,
+	FOREIGN KEY (RoleId) REFERENCES dbo.Roles(Id),
+);

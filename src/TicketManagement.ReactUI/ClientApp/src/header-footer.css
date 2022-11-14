@@ -1,0 +1,184 @@
+﻿/* Main color - #32AFED */
+
+/* Styles for main tags */
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Franklin Gothic';
+	color: black;
+}
+
+body {
+	margin: 0;
+	color: #fff;
+	display: table;
+	min-height: 100vh;
+	width: 100%;
+}
+
+header {
+	background: blue;
+	height: 120px;
+}
+
+main {
+	display: table-row;
+	/* Чтобы ряд занимал всё оставшееся пространство, так как табличная разметка не позволит ему вытолкнуть header и footer */
+	height: 100%;
+	background-color: azure;
+}
+
+
+/* Main element header */
+
+.header-top {
+	width: 100%;
+	background-color: #F9F9F9;
+	height: 55%;
+}
+
+.header-bottom {
+	background-color: #32AFED;
+	width: 100%;
+	height: 45%;
+}
+
+/* Elements header-top */
+
+.header-name {
+	float: left;
+	justify-content: center;
+	width: 40%;
+	margin-left: 10%;
+	padding: 0.5%;
+}
+
+.header-name a {
+	text-decoration: none;
+	text-align: center;
+	color: dimgrey;
+	font-size: 30px;
+}
+
+.header-name a:hover {
+	text-decoration: none;
+	color: dimgrey;
+}
+
+#formLanguage {
+	width: 40%;
+}
+
+.select-language-block {
+	height: 100%;
+	width: 30%;
+	float: right;
+	margin: 0px;
+}
+
+.label-language, .select-language {
+	display: inline;
+}
+
+.header-user-reference {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	float: right;
+	width: 12%;
+	height: 100%;
+	background-color: #ECECEC;
+	color: #32AFED;
+	font-size: 20px;
+	text-decoration: none;
+	border-left: 1px #32AFED solid;
+	transition: 0.12s;
+}
+
+.header-user-reference:hover {
+	text-decoration: none;
+	color: #2A2A2A;
+	background-color: #E1E1E1;
+	transition: 0.12s;
+}
+
+/* Elements header-bottom */
+
+.header-all-references-block {
+	background-color: #32AFED;
+	width: 40%;
+	margin-left: 30%;
+}
+
+.header-reference {
+	display: block;
+	float: left;
+	width: 33%;
+	height: 100%;
+	background-color: #32AFED;
+	font-size: 24px;
+	text-align: center;
+	line-height: 210%;
+	border-left: 1px #fff solid;
+	transition: 0.12s;
+	color: #fff;
+}
+
+.header-reference:hover {
+	height: calc(100% + 3px);
+	margin-top: -4px;
+	transition: 0.15s;
+	text-decoration: none;
+	color: #fff;
+	border-radius: 2%;
+	padding-top: 3px;
+	background-color: #2498DC;
+	box-shadow: 0px 0px 3px #32AFED;
+}
+
+#header_last_reference {
+	border-right: 1px #fff solid;
+}
+
+
+/* Elements footer */
+
+footer {
+	margin-top: 40px;
+	background: #32AFED;
+	height: 50px;
+}
+
+.footer-copy {
+	float: left;
+	height: 100%;
+	width: 40%;
+	justify-content: center;
+	margin-left: 5%;
+}
+
+.footer-copy span {
+	justify-content: center;
+	color: white;
+}
+
+.footer-name {
+	font-size: 22px;
+	margin-right: 15%;
+}
+
+.footer-img-block {
+	float: right;
+	border-radius: 100%;
+	background-color: white;
+	width: 46px;
+	height: 46px;
+	padding: 2px;
+	margin: 2px;
+}
+
+.footer-img-block img {
+	width: 42px;
+	height: 42px;
+}

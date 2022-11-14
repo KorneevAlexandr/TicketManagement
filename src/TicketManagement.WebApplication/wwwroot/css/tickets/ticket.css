@@ -1,0 +1,99 @@
+﻿.wrapper {
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 2%;
+}
+
+.event-info {
+	margin-bottom: 2%;
+}
+
+.ticket-content {
+	padding: 2% 5% 2% 5%;
+	width: 80%;
+	margin-left: 10%;
+	background-color: blanchedalmond;
+	height: 70vh;
+}
+
+.user-info, .place-info {
+	width: 100%;
+	margin-bottom: 3%;
+}
+
+.info-block {
+	font-size: 20px;
+	display: inline-block;
+	width: 32%;
+}
+
+.event-info-block {
+	font-size: 20px;
+}
+
+.buy-ref {
+	display: block;
+	font-size: 22px;
+	background-color: #55C915;
+	color: white;
+	width: 30%;
+	float: right;
+	margin-right: 6%;
+	margin-top: 5%;
+	text-align: center;
+	justify-content: center;
+	border: none;
+	transition: 0.1s;
+}
+
+	.buy-ref:hover {
+		text-decoration: none;
+		color: white;
+		box-shadow: 0px 0px 8px #55C915;
+		transition: 0.1s;
+	}
+
+.ref-up-balance {
+	display: block;
+	font-size: 22px;
+	background-color: #D03300;
+	color: white;
+	width: 30%;
+	float: right;
+	margin-right: 6%;
+	margin-top: 5%;
+	text-align: center;
+	justify-content: center;
+	opacity: 0.6;
+	border: none;
+	transition: 0.1s;
+}
+
+.ref-up-balance:hover {
+	text-decoration: none;
+	color: white;
+	opacity: 0.7;
+	box-shadow: 0px 0px 8px #D03300;
+	transition: 0.1s;
+}
+
+h3 {
+	width: 80%;
+	margin-left: 10%;
+	text-align: center;
+}
+
+.h3-info-place {
+	margin-top: 1%;
+}
+
+hr {
+	margin-top: 0;
+	margin-bottom: 0;
+	color: white;
+	border: 1px white solid;
+}
+
+.new-block {
+	width: 80%;
+}

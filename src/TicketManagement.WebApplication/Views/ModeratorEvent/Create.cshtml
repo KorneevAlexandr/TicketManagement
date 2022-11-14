@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization; 
+
+@model TicketManagement.ClientModels.Events.EventCreateModel
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+	<h2>@Localizer["TitleName"]</h2><br />
+
+	<form asp-action="Create" method="post">
+
+		<p>@Localizer["SelectLayout"]</p>
+		<p>
+			<select asp-for="LayoutId" asp-items="@(new SelectList(Model.Layouts, "Id", "Name"))"></select>
+		</p><br />
+
+		<input style="display: none" type="number" name="VenueId" value="@Model.VenueId"/><br />
+
+		<label>@Localizer["Name"]:</label><br />
+		<input type="text" required maxlength="120" name="name" /><br /><br />
+
+		<label>@Localizer["Description"]:</label><br />
+		<textarea type="text" required style="width: 80vh;" name="description" ></textarea><br /><br />
+
+		<label>@Localizer["DateTimeStart"]:</label><br />
+		<input type="date" required asp-for="DateTimeStart" />
+		<input type="time" required asp-for="TimeStart" /><br /><br />
+
+		<label>@Localizer["DateTimeEnd"]:</label><br />
+		<input type="date" required asp-for="DateTimeEnd" />
+		<input type="time" required asp-for="TimeEnd" /><br /><br />
+
+		<label>@Localizer["Price"], $:</label><br />
+		<input type="number" required max="1000000" min="0" name="price" /><br /><br />
+
+		<label>@Localizer["URL"]</label><br />
+		<input type="url" required maxlength="2000" name="url" /><br /><br />
+
+		<input type="submit" value="@Localizer["Create"]" />
+	</form>
+</div>

@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@model TicketManagement.ClientModels.Events.EventCollectionModel
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+	<form asp-action="Events" method="get">
+
+		<p>
+			<select asp-for="Id" asp-items="@(new SelectList(Model.InfoVenues, "Id", "Name"))"></select>
+		</p>
+
+		<p>
+			<input type="submit" value="@Localizer["Find"]" />
+		</p>
+	</form>
+
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>@Localizer["Name"]</td>
+				<td>@Localizer["DateStart"]</td>
+			</tr>
+		</thead>
+		@foreach (var item in Model.Events)
+		{
+			<tr>
+				<td>@item.Name | </td>
+				<td> @item.DateTimeStart.ToShortDateString()</td>
+				<td>
+					<a asp-action="Details" asp-route-id="@item.Id">@Localizer["Details"]</a>
+				</td>
+			</tr>
+
+		}
+	</table>
+
+	<br />
+	<p>@Localizer["SelectForCreate"]</p>
+	<form asp-action="Create" method="get">
+
+		<p>
+			<select asp-for="Id" asp-items="@(new SelectList(Model.InfoVenues, "Id", "Name"))"></select>
+		</p>
+
+		<p>
+			<input type="submit" value="@Localizer["Create"]" />
+		</p>
+	</form>
+
+</div>

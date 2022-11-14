@@ -1,0 +1,86 @@
+﻿@model System.Collections.Generic.IEnumerable<ThirdPartyEventEditor.Models.ThirdPartyEvent>
+
+@{ ViewBag.Title = "View"; }
+
+<style>
+	.ch-select {
+		width: 20px;
+		height: 20px;
+	}
+	li {
+		color: red;
+		font-size: 18px;
+	}
+</style>
+
+<h2>Events</h2>
+@using (Html.BeginForm("ExportFile", "Export", FormMethod.Post))
+{
+<table class="table table-striped">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Name)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.StartDate)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.EndDate)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Description)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.PosterImage)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Exported)
+		</th>
+		<th>Details</th>
+		<th>Add to file</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+<tr>
+	<td>
+		@Html.DisplayFor(modelItem => item.Name)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.StartDate)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.EndDate)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.Description)
+	</td>
+	<td>
+		<img width="120" height="160" src="@item.PosterImage" alt="" />
+	</td>
+	<td>
+		@if (item.Exported)
+		{
+<p style="color:red">Exported!</p> }
+					else
+					{
+<p style="color:green">While not exported</p>}
+	</td>
+	<td>
+		@Html.ActionLink("Details", "Details", new { id = item.Id })
+	</td>
+	<td>
+		<input class="ch-select" type="checkbox" name="parameters" value="@item.Id">
+	</td>
+
+</tr>}
+
+</table>
+
+<label>Write name for new file: (new file will be located, indicated in configuration)</label>
+<br />
+<input type="text" name="fileName" value="" />
+<br />
+<br />
+<input type="submit" value="Export" />
+}

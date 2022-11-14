@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;S105;SA1027;SA1505;SA1400;SA1210;SA1507;SA1508;S1118;SA1028;S1481;SA1413;SA1137;S125;S121;SA1503;SA1310;S2931;CA1001;SA1005;SA1401</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.1.0" />
+    <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="NUnit" Version="3.13.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\TicketManagement.BusinessLogic\TicketManagement.BusinessLogic.csproj" />
+    <ProjectReference Include="..\..\src\TicketManagement.ClientModels\TicketManagement.ClientModels.csproj" />
+    <ProjectReference Include="..\..\src\TicketManagement.DataAccess\TicketManagement.DataAccess.csproj" />
+    <ProjectReference Include="..\..\src\TicketManagement.EventAPI\TicketManagement.EventAPI.csproj" />
+    <ProjectReference Include="..\..\src\TicketManagement.PurchaseAPI\TicketManagement.PurchaseAPI.csproj" />
+    <ProjectReference Include="..\..\src\TicketManagement.UserAPI\TicketManagement.UserAPI.csproj" />
+    <ProjectReference Include="..\..\src\TicketManagement.VenueAPI\TicketManagement.VenueAPI.csproj" />
+  </ItemGroup>
+
+</Project>

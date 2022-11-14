@@ -1,0 +1,11 @@
+﻿CREATE TABLE Tickets
+(
+	Id INT PRIMARY KEY IDENTITY,
+	DateTimePurchase DATETIME2 NOT NULL,
+	UserId INT NOT NULL,
+	EventSeatId INT NOT NULL,
+	Price FLOAT,
+	EventName NVARCHAR(120),
+	FOREIGN KEY (UserId) REFERENCES Users(Id),
+	FOREIGN KEY (EventSeatId) REFERENCES EventSeat(Id),
+);

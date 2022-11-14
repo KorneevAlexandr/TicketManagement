@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@model TicketManagement.ClientModels.Events.EventSeatModel
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div style="margin: 2% 0% 0% 10%">
+	<h3>@Localizer["Area"]: @Model.AreaDescription</h3>
+	<p>@Localizer["ClickOnSeat"]:</p>
+
+	<form method="post">
+		<div>
+			@for (int i = 1; i <= Model.Rows; i++)
+			{
+				<div>
+					@for (int j = 1; j <= Model.Numbers; j++)
+					{
+						if (Model[i, j].Booked)
+						{
+							<input type="submit" style="width:40px; height:30px; background-color:red;" asp-action="ChangeSeatState" asp-route-id="@Model[i, j].Id" value="S" />
+						}
+						else
+						{
+							<input type="submit" style="width:40px; height:30px;" asp-action="ChangeSeatState" asp-route-id="@Model[i, j].Id" value="S" />
+						}
+					}
+				</div>
+			}
+		</div>
+	</form>
+</div>

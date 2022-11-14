@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization; 
+
+@model TicketManagement.ClientModels.Events.EventFullModel
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/events/event-full.css" />
+
+<div class="wrapper">
+	
+	<div class="event-content">
+		<h2 class="event-name">@Model.Event.Name</h2>
+		<img class="event-img" src="@Model.Event.URL">
+		<p class="event-description">@Model.Event.Description</p>
+		<hr />
+		<div class="event-date">
+			<div class="event-date-start">@Localizer["Start"]: @Model.Event.DateTimeStart.ToShortDateString() @Model.Event.DateTimeStart.ToShortTimeString()</div>
+			<div class="event-date-end">@Localizer["End"]: @Model.Event.DateTimeEnd.ToShortDateString() @Model.Event.DateTimeEnd.ToShortTimeString()</div>
+		</div>
+		<div class="event-venue">@Model.VenueName</div>
+		<div class="event-venue-info">@Model.Address; @Model.Phone</div>
+		<div class="event-free-seats">
+			@Localizer["FreeSeats"]: @Model.Event.Tickets
+			@if (Model.Event.Tickets == 0)
+			{
+				<p><i style="color: red">@Localizer["NotBuyTicket"]</i></p>
+			}
+		</div>
+	</div>
+
+	<h3 class="event-buy-ticket">
+		@Localizer["BuyTicket"]
+	</h3>
+
+	<table style="margin-bottom: 10%;" class="table table-striped">
+		<thead>
+			<tr>
+				<td>@Localizer["Description"]</td>
+				<td>@Localizer["CoordX"]</td>
+				<td>@Localizer["CoordY"]</td>
+				<td>@Localizer["Price"], $</td>
+				<td>@Localizer["Tickets"]</td>
+				<td>@Localizer["Actions"]</td>
+			</tr>
+		</thead>
+
+		@foreach (var item in Model.EventAreas)
+		{
+	<tr>
+		<td>@item.Description</td>
+		<td>@item.CoordX</td>
+		<td>@item.CoordY</td>
+		<td>@item.Price</td>
+		<td>@item.Tickets</td>
+		@if (item.Tickets != 0)
+		{
+			<td>
+				<a class="event-buy-ref" asp-action="Seats" asp-route-id="@item.Id">@Localizer["BuyTicket"]</a>
+			</td>
+		}
+		else
+		{
+			<td>
+				<span class="event-not-buy-ref">@Localizer["NotTickets"]</span>
+			</td>
+		}
+	</tr>
+		}
+	</table>
+
+</div>

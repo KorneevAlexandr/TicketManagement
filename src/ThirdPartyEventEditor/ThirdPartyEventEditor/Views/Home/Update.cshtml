@@ -1,0 +1,43 @@
+﻿@model ThirdPartyEventEditor.Models.ThirdPartyEvent
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<form action="Update" method="post">
+	<div class="validation-block">
+		<p>@Html.ValidationMessageFor(model => model.Name)</p>
+		<p>@Html.ValidationMessageFor(model => model.LayoutName)</p>
+		<p>@Html.ValidationMessageFor(model => model.StartDate)</p>
+		<p>@Html.ValidationMessageFor(model => model.EndDate)</p>
+		<p>@Html.ValidationMessageFor(model => model.Description)</p>
+		<p>@Html.ValidationMessageFor(model => model.Price)</p>
+		<p>@Html.ValidationMessageFor(model => model.NameImage)</p>
+	</div><br />
+
+	<input style="display: none" type="number" name="Id" value="@Model.Id" />
+
+	<label>Name: </label><br />
+	<input type="text" name="Name" value="@Model.Name" /><br /><br />
+
+	<label>Layout name: </label><br />
+	<input type="text" name="LayoutName" value="@Model.LayoutName" /><br /><br />
+
+	<label>Date start: </label><br />
+	<input type="text" name="StartDate" value="@Model.StartDate" /><br /><br />
+
+	<label>Date end: </label><br />
+	<input type="text" name="EndDate" value="@Model.EndDate" /><br /><br />
+
+	<label>Description: </label><br />
+	<textarea name="Description">@Model.Description</textarea><br /><br />
+
+	<label>Price</label><br />
+	<input type="text" name="Price" value="@Model.Price" /><br /><br />
+
+	<label>Name image: </label><br />
+	<textarea name="NameImage">@if (Model != null) {@Model.NameImage}</textarea><br /><br />
+
+	<input type="submit" value="Update" />
+</form>
+

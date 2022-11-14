@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@model TicketManagement.ClientModels.Users.UserModel;
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/login.css" />
+
+<form class="form-register" method="post" asp-anti-forgery="true">
+	<h3>@Localizer["UpdateSettings"]</h3>
+	<div class="form-left">
+		<div>
+			<label asp-for="Name">@Localizer["EnterName"]</label>
+			<input asp-for="Name" required maxlength="30" value="@Model.Name" />
+			<span asp-validation-for="Name" />
+		</div>
+		<div>
+			<label asp-for="Surname">@Localizer["EnterSurname"]</label>
+			<input asp-for="Surname" required maxlength="40" value="@Model.Surname" />
+			<span asp-validation-for="Surname" />
+		</div>
+		<div>
+			<label asp-for="Age">@Localizer["EnterAge"]</label>
+			<input type="number" required max="120" min="3" asp-for="Age" value="@Model.Age" />
+			<span asp-validation-for="Age" />
+		</div>
+		<div>
+			<label asp-for="Email">@Localizer["EnterEmail"]</label>
+			<input type="email" required maxlength="40" asp-for="Email" value="@Model.Email" />
+			<span asp-validation-for="Email" />
+		</div>
+	</div>
+
+	<div class="form-right">
+		<div>
+			<label asp-for="Login">@Localizer["EnterLogin"]</label>
+			<input type="text" required maxlength="60" asp-for="Login" value="@Model.Login" />
+			<span asp-validation-for="Login" />
+		</div>
+		<div>
+			<label asp-for="Password">@Localizer["EnterPassword"]</label>
+			<input asp-for="Password"required maxlength="60" value="@Model.Password" />
+			<span asp-validation-for="Password" />
+		</div>
+		<div>
+			<input class="input-sign-in" type="submit" value="@Localizer["Save"]" />
+		</div>
+	</div>
+</form>

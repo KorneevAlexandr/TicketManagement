@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization; 
+
+@model TicketManagement.ClientModels.Users.UserModel;
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/users/user-score.css" />
+
+<div class="wrapper">
+
+	<h2>@Localizer["UpBalance"]</h2>
+	<div class="user-score">@Localizer["YourBalance"]: @Model.Score</div>
+
+	<form method="post">
+		<input style="display: none" name="id" value="@Model.Id">
+
+		<label>@Localizer["EnterScore"]:</label><br />
+		<input type="number" required min="1" max="1000000" name="score" value="" />
+
+		<input class="btn-add" type="submit" value="@Localizer["Accept"]" />
+	</form>
+
+</div>

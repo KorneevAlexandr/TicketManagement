@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@model TicketManagement.ClientModels.Layouts.LayoutModel
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+	<p>@Localizer["SelectVenue"]</p>
+	<form asp-action="Layouts" method="get">
+
+		<p>
+			<select name="venueId" asp-items="@(new SelectList(Model.InfoVenues, "Id", "Name"))"></select>
+		</p>
+
+		<p>
+			<input type="submit" value="@Localizer["Find"]" />
+		</p>
+	</form>
+
+
+	<a class="special-ref" asp-action="Create">@Localizer["CreateLayout"]</a>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>@Localizer["Name"]</td>
+				<td>@Localizer["Venue"]</td>
+				<td>@Localizer["Actions"]</td>
+			</tr>
+		</thead>
+
+		@foreach (var item in Model.Layouts)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td> @item.VenueName</td>
+				<td>
+					<a asp-action="Details" asp-route-id="@item.Id">@Localizer["Details"]</a>
+				</td>
+			</tr>
+
+		}
+	</table>
+</div>

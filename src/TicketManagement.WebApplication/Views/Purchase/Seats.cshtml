@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization; 
+
+@model TicketManagement.ClientModels.Events.EventSeatModel
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/seats/seat-map.css" />
+
+<div class="wrapper">
+	<div class="area-info">
+		<div class="area-field">@Localizer["Area"]: @Model.AreaDescription</div>
+		<div class="area-field">@Localizer["Price"]: @Model.Price</div>
+	</div>
+	<h3 class="seat-click">@Localizer["ClickOnSeat"]</h3>
+
+	<form method="post">
+		<div class="seat-map">
+			@for (int i = 1; i <= Model.Rows; i++)
+			{
+				<div class="seat-row">
+					@for (int j = 1; j <= Model.Numbers; j++)
+					{
+						if (Model[i, j].Booked)
+						{
+							<input class="input-booked input-seat" type="submit" title="@Localizer["Bought"]" value="" />
+						}
+						else
+						{
+							<input class="input-free input-seat" type="submit" asp-action="BeforeBuyTicket" asp-route-id="@Model[i, j].Id" 
+								   title="@Localizer["Row"]: @i; @Localizer["Number"]: @j" value="" />
+						}
+					}
+				</div>
+			}
+		</div>
+	</form>
+
+</div>

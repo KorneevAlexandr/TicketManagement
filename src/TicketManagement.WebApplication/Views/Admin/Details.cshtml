@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization; 
+
+@model TicketManagement.ClientModels.Users.UserModel
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<div style="width: 80%; margin: 3% 0% 0% 10%">
+	<p>@Localizer["FullName"]: @Model.FullName</p>
+	<p>@Localizer["Login"]: @Model.Login</p>
+	<p>@Localizer["Password"]: @Model.Password</p>
+	<p>@Localizer["RoleName"]: @Model.RoleName</p>
+
+	<br />
+
+	<form method="post">
+		<input asp-action="CreateUser" asp-controller="Admin" asp-route-id="@Model.Id" type="submit" value="@Localizer["CreateUser"]" />
+		<input asp-action="CreateModeratorVenue" asp-controller="Admin" asp-route-id="@Model.Id" type="submit" value="@Localizer["CreateVenueUser"]" />
+		<input asp-action="CreateModeratorEvent" asp-controller="Admin" asp-route-id="@Model.Id" type="submit" value="@Localizer["CreateEventUser"]" />
+	</form>
+</div>

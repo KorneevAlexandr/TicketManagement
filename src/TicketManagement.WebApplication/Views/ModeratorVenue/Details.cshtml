@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@model TicketManagement.ClientModels.Venues.VenueModel;
+@inject IViewLocalizer Localizer;
+
+@{
+	ViewData["Title"] = Localizer["TitleName"];
+}
+
+<link rel="stylesheet" href="~/css/simple-wrapper.css" />
+
+<div class="wrapper-simple">
+	<h2>@Localizer["Details"]</h2><br />
+
+	<p>@Localizer["Name"]: @Model.Name</p>
+	<p>@Localizer["Description"]: @Model.Description</p>
+	<p>@Localizer["Address"]: @Model.Address</p>
+	<p>@Localizer["Phone"]: @Model.Phone</p>
+</div>
